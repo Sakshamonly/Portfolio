@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Twitter, Mail, Target } from "lucide-react"
 import Image from "next/image"
 
 export default function HeroSection() {
@@ -16,7 +16,7 @@ export default function HeroSection() {
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                                 Hi, I'm <span className="block">Saksham Pandey</span>
                             </h1>
-                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-blue-500">
+                            <h2 className="text-1.5xl sm:text-1.5xl lg:text-3xl font-semibold text-blue-500">
                                 Software Developer
                             </h2>
                         </div>
@@ -42,7 +42,7 @@ export default function HeroSection() {
 
                         <div className="flex justify-center lg:justify-start space-x-6 pt-4">
                             {[
-                                { icon: Linkedin, href: "https://www.linkedin.com/in/saksham-pandey-546319282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
+                                { icon: Linkedin, href: "https://www.linkedin.com/in/saksham-pandey-546319282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn",},
                                 { icon: Github, href: "https://github.com/Sakshamonly", label: "GitHub" },
                                 { icon: Twitter, href: "https://x.com/fcuksham?t=Hi6f8CaJjZzGSKWT8-5xVQ&s=08", label: "Twitter" },
                                 // { icon: Mail, href: "mailto:sakshampandey234@gmail.com", label: "Email" },
@@ -50,6 +50,7 @@ export default function HeroSection() {
                                 <a
                                     key={label}
                                     href={href}
+                                    target="_blank"
                                     className="p-3 rounded-full bg-gray-100 hover:bg-white text-gray-600 hover:text-blue-500 transition-all duration-300 transform hover:scale-110 hover:shadow-md border border-transparent hover:border-gray-200"
                                     aria-label={label}
                                 >
@@ -61,7 +62,7 @@ export default function HeroSection() {
 
                     {/* Right Side - Profile Image Only (Clean) */}
                     <div className="flex justify-center lg:justify-end">
-                        <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-100">
+                        <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-100">
                             <Image
                                 src="/mypic.jpg" // 👈 Replace this with your actual image path
                                 alt="Saksham - Frontend Developer"

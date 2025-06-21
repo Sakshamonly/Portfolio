@@ -62,107 +62,57 @@ export default function ProjectsSection() {
 
   const closeModal = () => {
     setIsModalOpen(false)
-    setTimeout(() => setSelectedProject(null), 300) // Delay to allow animation
+    setTimeout(() => setSelectedProject(null), 300)
   }
 
   return (
     <section id="projects" className="py-16 px-4 bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
       <div className="max-w-6xl mx-auto">
-        {/* Section Heading */}
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-gray-900 mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Projects
-            {/* <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full shadow-lg shadow-blue-500/50 animate-pulse"></div> */}
           </h2>
         </div>
 
-        {/* Timeline Container */}
         <div className="relative">
-          {/* Central Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 to-purple-500 h-full rounded-full"></div>
 
-          {/* Projects */}
           <div className="space-y-24">
             {dummyProjects.map((project, index) => (
-              <div key={project.id} className="relative flex items-center">
-                {/* Timeline Dot */}
+              <div key={project.id} className="relative flex flex-col md:flex-row items-center">
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white border-4 border-blue-500 rounded-full z-20 shadow-lg"></div>
 
-                {/* Project Card - Left Side */}
-                {index % 2 === 0 && (
-                  <>
-                    <div className="w-1/2 pr-20">
-                      <div
-                        className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ml-auto max-w-md"
-                        onClick={() => openModal(project)}
-                      >
-                        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-blue-300 transition-all duration-300">
-                          {/* Project Image */}
-                          <div className="relative overflow-hidden">
-                            <img
-                              src={project.image || "/placeholder.svg"}
-                              alt={project.title}
-                              className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                          </div>
-
-                          {/* Project Info */}
-                          <div className="p-6">
-                            <h3 className="text-2xl font-bold text-gray-800 mb-3">{project.title}</h3>
-                            <p className="text-blue-600 font-medium text-sm flex items-center gap-2">
-                              Click to view details
-                              <span className="text-lg">→</span>
-                            </p>
-                          </div>
-                        </div>
+                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-20" : "md:pl-20 md:ml-auto"}`}>
+                  <div
+                    className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl max-w-md mx-auto"
+                    onClick={() => openModal(project)}
+                  >
+                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-blue-300 transition-all duration-300">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3">{project.title}</h3>
+                        <p className="text-blue-600 font-medium text-sm flex items-center gap-2">
+                          Click to view details <span className="text-lg">→</span>
+                        </p>
                       </div>
                     </div>
-                  </>
-                )}
-
-                {/* Project Card - Right Side */}
-                {index % 2 === 1 && (
-                  <>
-                    <div className="w-1/2 pl-20 ml-auto">
-                      <div
-                        className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl max-w-md"
-                        onClick={() => openModal(project)}
-                      >
-                        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-blue-300 transition-all duration-300">
-                          {/* Project Image */}
-                          <div className="relative overflow-hidden">
-                            <img
-                              src={project.image || "/placeholder.svg"}
-                              alt={project.title}
-                              className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                          </div>
-
-                          {/* Project Info */}
-                          <div className="p-6">
-                            <h3 className="text-2xl font-bold text-gray-800 mb-3">{project.title}</h3>
-                            <p className="text-blue-600 font-medium text-sm flex items-center gap-2">
-                              Click to view details
-                              <span className="text-lg">→</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
           <div
             className={`absolute inset-0 bg-black transition-opacity duration-300 ${
               isModalOpen ? "opacity-50" : "opacity-0"
@@ -170,13 +120,9 @@ export default function ProjectsSection() {
             onClick={closeModal}
           ></div>
 
-          {/* Modal Content */}
           <div
-            className={`relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 ${
-              isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
-            }`}
+            className="relative bg-white dark:bg-[#121212] p-4 md:p-6 w-full h-full md:max-w-2xl md:h-auto mx-auto my-8 rounded-none md:rounded-2xl shadow-lg z-50 overflow-auto"
           >
-            {/* Close Button */}
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 z-10"
@@ -184,16 +130,11 @@ export default function ProjectsSection() {
               <X className="w-5 h-5 text-gray-600" />
             </button>
 
-            {/* Modal Body */}
             {selectedProject && (
-              <div className="p-8">
-                {/* Project Title */}
+              <div className="p-4 md:p-8">
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 pr-12">{selectedProject.title}</h3>
-
-                {/* Project Description */}
                 <p className="text-gray-600 leading-relaxed mb-8 text-lg">{selectedProject.description}</p>
 
-                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href={selectedProject.githubUrl}

@@ -6,6 +6,7 @@ import SkillsSection from "@/components/skills-section"
 import ProjectsSection from "@/components/projects"
 import Certifications from "@/components/certifications"
 import ContactFooter from "@/components/contact"
+import PortfolioIntro from "@/components/portfolio-intro"
 
 
 export default function Page() {

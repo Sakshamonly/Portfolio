@@ -1,19 +1,22 @@
 "use client"
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import PortfolioIntro from "@/components/portfolio-intro"
+import HomePage from "@/app/home/page"
 
 export default function Page() {
-  const router = useRouter()
+  const [showIntro, setShowIntro] = useState(true)
 
   useEffect(() => {
-    const alreadyVisited = localStorage.getItem("visited")
-    if (alreadyVisited) {
-      router.push("/home")
-    } else {
-      router.push("/intro")
-    }
-  }, [router])
+    const timeout = setTimeout(() => {
+      setShowIntro(false)
+    }, 7000) // ⏳ 5 languages * 1.2s + buffer
 
-  return null
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <>
+      {showIntro ? <PortfolioIntro /> : <HomePage />}
+    </>
+  )
 }
-// This page checks if the user has already visited the site.

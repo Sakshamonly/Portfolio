@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export default function HeroSection() {
     return (
-        <section className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <section id="about" className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -23,8 +23,6 @@ export default function HeroSection() {
 
                         <p className="text-lg text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
                             I’m a Computer Science student who enjoys building responsive websites and solving coding problems. I work with tools like React, Next.js, and explore AI/ML in my free time. I believe in hands-on learning and constantly push myself to grow through projects.
-                            <br />
-                            📧 : sp.saksham2004@gmail.com
                             </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
